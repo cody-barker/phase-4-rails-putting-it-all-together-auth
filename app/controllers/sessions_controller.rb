@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: {error: session.errors.full_messages}, status: :unauthorized
+            render json: {errors: session.errors.full_messages}, status: :unauthorized
         end
     end
 
