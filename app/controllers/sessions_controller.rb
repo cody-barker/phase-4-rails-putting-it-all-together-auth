@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: {errors: session.errors.full_messages}, status: :unauthorized
+            render json: {errors: ["Incorrect username or password"]}, status: :unauthorized
         end
     end
 
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
             session.delete(:user_id)
             render json: {}, status: :no_content
         else
-            render json: {errors: session.errors.full_messages}, status: :unauthorized
+            render json: {errors: ["Unauthorized"]}, status: :unauthorized
         end
     end
 end
